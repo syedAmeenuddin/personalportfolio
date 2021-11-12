@@ -1,0 +1,232 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- BOOTSTRAP LINKS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+            integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- CSS only -->
+        <link rel="stylesheet" href="{% static "portfolio/style.css" %}">
+        <title>Portfolio</title>
+        <style>
+        {% for home in home %}
+        .image{
+        margin-top: 70px;
+        background-image: url(media/{{ home.profilephoto }});
+        width: 250px;
+        height: 250px;
+        background-size: cover;
+        border-radius: 50%;
+        }
+        {% endfor %}
+        </style>
+    </head>
+<body>
+
+    <div class="portfolio">
+        <div class="left_side_silde">
+
+          <ul>
+                   <li> <a href="#home" style="--i:1" onclick="toggleMenu();">HOME</a> </li>
+                   <li><a href="#about"  style="--i:2" onclick="toggleMenu();">ABOUT</a></li>
+                   <li><a href="#service" style="--i:3" onclick="toggleMenu();">SERVICE</a></li>
+                   <li><a href="#project"  style="--i:4" onclick="toggleMenu();">PROJECT</a></li>
+                   <li><a href="#contact"  style="--i:5" onclick="toggleMenu();">CONTACT</a></li>
+
+               </ul>
+
+        </div>
+        <div class="right_side_main">
+         <div class="navbar_logo_toggle">
+             <a href="#" class="logo">Portfolio</a>
+             <div class="mainpagenavigation">
+               <ul>
+                    <li> <a href="#home" style="--i:1" onclick="toggleMenu();">HOME</a> </li>
+                    <li><a href="#about"  style="--i:2" onclick="toggleMenu();">ABOUT</a></li>
+                    <li><a href="#service" style="--i:3" onclick="toggleMenu();">SERVICE</a></li>
+                    <li><a href="#project"  style="--i:4" onclick="toggleMenu();">PROJECT</a></li>
+                    <li><a href="#contact"  style="--i:5" onclick="toggleMenu();">CONTACT</a></li>
+
+                </ul>
+             </div>
+             <div class="toggle"><i class="fa fa-bars"></i></div>
+         </div>
+{% for home in home %}
+         <div class="banner" id="home">
+             <div class="image">
+
+             </div>
+             <br>
+             <div class="name">
+                <span >{{ home.name }}</span>
+             </div>
+             <div class="profile">
+
+               <span > {{ home.devtitle }} </span>
+
+             </div>
+             <div class="downloadcv Kbtn">
+                <a href="{{ home.cvlink }}" target="_blank">Download My CV</a>
+             </div>
+
+             <ul class="socialmedia">
+                <li><a href="{{ home.socialmedia_linkedin }}" target="_blank"><i class="icon fa fa-linkedin "></i></a></li>
+                <li><a href="{{ home.socialmedia_github }}" target="_blank"><i class="icon fa fa-github "></i></a></li>
+                <li><a href="{{ home.socialmedia_stackoverflow }}"target="_blank"><i class="icon fa fa-stack-overflow"></i></a></li>
+                <li><a href="{{ home.socialmedia_insta }}" target="_blank"><i class="icon fa fa-instagram"></i></a></li>
+             </ul>
+         </div>
+{% endfor %}
+{% for about in about %}
+         <div class="about" id="about">
+
+            <div class="title">
+                <h4>About me</h4>
+            </div>
+            <div class="aboutme_img">
+                <div class="abtme">
+                   <p>
+                       {{ about.aboutme | safe}}
+                    </p>
+                </div>
+                <div class="abtimg">
+                    <img src="media/{{ about.aboutmeimage }}" alt="Profile Photo">
+                </div>
+            </div>
+
+         </div>
+         {% endfor %}
+
+         <div class="service" id="service">
+            <div class="title">
+                <h4>Service</h4>
+            </div>
+            <!-- <br>
+            <br> -->
+            <div class="serivcecontainer">
+              {% for service in service %}
+
+                <div class="serivcecontent">
+                    <div class="desing">
+                        <div class="contenttitle">
+                            <span class="designK">{{service.title}}</span>
+                        </div>
+                        <div class="brief">
+                            <p>{{service.brief}}
+                            </p>
+                            <strong>Domain's I use</strong>
+                            <p>{{service.domainlist}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+         </div>
+         <div class="project" id="project">
+                     <div class="title">
+                         <h4>Project</h4>
+                     </div>
+                     <br>
+                     <br>
+                     <div class="projectcontainer">
+                       {% for project in project %}
+                         <a href="project/{{project.id}}">
+                             <div class="projectcontent">
+                                 <img src="media/{{ project.image }}"alt="projectimage">
+                             </div>
+                         </a>
+                         {% endfor %}
+                     </div>
+                  </div>
+         {% for contact in contact %}
+             <div class="contact" id="contact">
+                <div class="title">
+                    <h4>contact</h4>
+                </div>
+                <div class="contactsection">
+                    <div class="emailcontact">
+                        <div class="contactcontainer">
+                            <div class="contactname">
+                                <input type="text"placeholder="ENTER YOUR NAME" >
+                                <input type="email"placeholder="ENTER YOUR EMAIL" >
+                            </div>
+                            <div class="message">
+                                <textarea placeholder="Your Message..." >
+                                </textarea>
+                            </div>
+                            <div class="submit">
+                                <input type="submit" value="Send">
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="manualcontactdetails">
+                       <li class="display-flex">
+                         <div class="iconlo">
+                           <i class="mcd-icons fa fa-phone "></i>
+                           <i class="mcd-icons fa fa-whatsapp "></i>
+                        </div>
+                        <div class="phno">+91 {{contact.phonenumber}}</div>
+                    </li>
+                       <li class="display-flex">
+                        <div class="iconlo">
+                            <i class="mcd-icons fa fa-envelope"></i>
+                         </div>
+                           <div class="mail">{{contact.email}}</div>
+                        </li>
+                        <li class="display-flex">
+                            <div class="iconlo">
+                                <i class="mcd-icons fa fa-globe"></i>
+                             </div>
+                             <div class="state">
+                            {{contact.state}}
+                        </div>
+                    </li>
+                    </ul>
+                </div>
+{% endfor %}
+              </div>
+              <br>
+              <div class="copyrights" id="copyrights">
+                <div class="copyrightsK">
+                    <span>Handcrafted by me</span>
+                </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+        let right_side_main = document.querySelector('.right_side_main');
+        let toggle = document.querySelector('.toggle');
+        let navbar_logo_toggle = document.querySelector('.navbar_logo_toggle');
+        let left_side_silde = document.querySelector('.left_side_silde');
+        toggle.onclick = function(){
+            toggle.classList.toggle('active');
+            left_side_silde.classList.toggle('active');
+        }
+        function toggleMenu(){
+            let left_side_silde = document.querySelector('.left_side_silde');
+            let right_side_main = document.querySelector('.right_side_main');
+            left_side_silde.classList.remove('active');
+            right_side_main.classList.remove('active');
+        }
+    </script>
+</body>
+</html>

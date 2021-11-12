@@ -1,0 +1,50 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(240, 240, 240);
+}
+.projectpage{
+     margin:0 10em;
+     margin-top: 1em;
+
+}
+.projecttitle{
+    font-size: 30px;
+    font-weight: bolder;
+    font-family: 'Mohave';
+}
+.projecttitle{
+    animation: right_to_left 2s ease ;
+}
+@keyframes right_to_left{
+    0%{
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+.a a{
+    text-decoration: none;
+    color: rgb(0, 26, 173);
+    font-size: small;
+    font-weight: bold;
+}
+.projectbanner img{
+    width: 100%;
+    height: 15em;
+}
+@media (max-width:675px){
+
+    .projectpage{
+        margin:0 2em !important;
+        margin-top: 2em !important;
+
+   }
+
+}
