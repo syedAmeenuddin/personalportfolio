@@ -17,6 +17,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
             integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
             crossorigin="anonymous"></script>
+
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- CSS only -->
@@ -43,9 +44,12 @@
           <ul>
                    <li> <a href="#home" style="--i:1" onclick="toggleMenu();">HOME</a> </li>
                    <li><a href="#about"  style="--i:2" onclick="toggleMenu();">ABOUT</a></li>
-                   <li><a href="#service" style="--i:3" onclick="toggleMenu();">SERVICE</a></li>
-                   <li><a href="#project"  style="--i:4" onclick="toggleMenu();">PROJECT</a></li>
-                   <li><a href="#contact"  style="--i:5" onclick="toggleMenu();">CONTACT</a></li>
+                   <li><a href="#experience"  style="--i:3" onclick="toggleMenu();">
+                    EXPERIENCE</a>
+                   </li>
+                   <li><a href="#service" style="--i:4" onclick="toggleMenu();">SERVICE</a></li>
+                   <li><a href="#project"  style="--i:5" onclick="toggleMenu();">PROJECT</a></li>
+                   <li><a href="#contact"  style="--i:6" onclick="toggleMenu();">CONTACT</a></li>
 
                </ul>
 
@@ -54,13 +58,16 @@
          <div class="navbar_logo_toggle">
              <a href="#" class="logo">Portfolio</a>
              <div class="mainpagenavigation">
-               <ul>
+                <ul>
                     <li> <a href="#home" style="--i:1" onclick="toggleMenu();">HOME</a> </li>
                     <li><a href="#about"  style="--i:2" onclick="toggleMenu();">ABOUT</a></li>
-                    <li><a href="#service" style="--i:3" onclick="toggleMenu();">SERVICE</a></li>
-                    <li><a href="#project"  style="--i:4" onclick="toggleMenu();">PROJECT</a></li>
-                    <li><a href="#contact"  style="--i:5" onclick="toggleMenu();">CONTACT</a></li>
-
+                    <li><a href="#experience"  style="--i:3" onclick="toggleMenu();">
+                     EXPERIENCE</a>
+                    </li>
+                    <li><a href="#service" style="--i:4" onclick="toggleMenu();">SERVICE</a></li>
+                    <li><a href="#project"  style="--i:5" onclick="toggleMenu();">PROJECT</a></li>
+                    <li><a href="#contact"  style="--i:6" onclick="toggleMenu();">CONTACT</a></li>
+ 
                 </ul>
              </div>
              <div class="toggle"><i class="fa fa-bars"></i></div>
@@ -110,6 +117,44 @@
 
          </div>
          {% endfor %}
+
+
+
+
+ <div class="experience" id="experience">
+    <div class="title">
+        <h4>Experience</h4>
+    </div>
+    <br>
+    <br>
+{% for experience in experience %}
+
+    <div class="jobBox">
+        <div class="map_Span">
+            <div class="map">
+                <i class="icon fa fa-briefcase"></i>
+            </div>
+            <div class="job_started_date">{{ experience.started_month_year }} - {{ experience.ended_month_year_or_present }}</div>
+
+        </div>
+        <div class="job_details">
+            <div class="job_line">
+            </div>
+            <div class="job_box">
+                <h4 class="jobTitle">{{ experience.companyName }}</h4>
+                <h3 class="jobDomain">{{ experience.job_domain }}</h3>
+                <p class="jobDescription">{{ experience.description_of_job }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <!-- end content  -->
+</div>
+
+        
+
+
+
 
          <div class="service" id="service">
             <div class="title">
@@ -203,7 +248,7 @@
               <br>
               <div class="copyrights" id="copyrights">
                 <div class="copyrightsK">
-                    <span>Handcrafted by me</span>
+                    <span>Handcrafted by me @2020-2022</span>
                 </div>
         </div>
     </div>

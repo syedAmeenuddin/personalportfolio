@@ -19,6 +19,13 @@ class about(models.Model):
     aboutmeimage = models.ImageField(upload_to='portfolio/images/', blank=True)
 
 
+class experience(models.Model):
+    started_month_year= models.CharField(max_length=30, blank=True)
+    ended_month_year_or_present= models.CharField(max_length=30, blank=True)
+    companyName = models.CharField(max_length=50, blank=True)
+    job_domain = models.CharField(max_length=50, blank=True)
+    description_of_job = models.CharField(max_length=100, blank=True)
+
 class service(models.Model):
     title = models.CharField(max_length=50, blank=True)
     brief = models.CharField(max_length=100, blank=True)
