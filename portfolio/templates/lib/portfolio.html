@@ -17,7 +17,6 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
             integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
             crossorigin="anonymous"></script>
-
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- CSS only -->
@@ -41,24 +40,7 @@
     <div class="portfolio">
         <div class="left_side_silde">
 
-          <ul>
-                   <li> <a href="#home" style="--i:1" onclick="toggleMenu();">HOME</a> </li>
-                   <li><a href="#about"  style="--i:2" onclick="toggleMenu();">ABOUT</a></li>
-                   <li><a href="#experience"  style="--i:3" onclick="toggleMenu();">
-                    EXPERIENCE</a>
-                   </li>
-                   <li><a href="#service" style="--i:4" onclick="toggleMenu();">SERVICE</a></li>
-                   <li><a href="#project"  style="--i:5" onclick="toggleMenu();">PROJECT</a></li>
-                   <li><a href="#contact"  style="--i:6" onclick="toggleMenu();">CONTACT</a></li>
-
-               </ul>
-
-        </div>
-        <div class="right_side_main">
-         <div class="navbar_logo_toggle">
-             <a href="#" class="logo">Portfolio</a>
-             <div class="mainpagenavigation">
-                <ul>
+         <ul>
                     <li> <a href="#home" style="--i:1" onclick="toggleMenu();">HOME</a> </li>
                     <li><a href="#about"  style="--i:2" onclick="toggleMenu();">ABOUT</a></li>
                     <li><a href="#experience"  style="--i:3" onclick="toggleMenu();">
@@ -67,7 +49,24 @@
                     <li><a href="#service" style="--i:4" onclick="toggleMenu();">SERVICE</a></li>
                     <li><a href="#project"  style="--i:5" onclick="toggleMenu();">PROJECT</a></li>
                     <li><a href="#contact"  style="--i:6" onclick="toggleMenu();">CONTACT</a></li>
- 
+
+                </ul>
+
+        </div>
+        <div class="right_side_main">
+         <div class="navbar_logo_toggle">
+             <a href="#" class="logo">Portfolio</a>
+             <div class="mainpagenavigation">
+              <ul>
+                    <li> <a href="#home" style="--i:1" onclick="toggleMenu();">HOME</a> </li>
+                    <li><a href="#about"  style="--i:2" onclick="toggleMenu();">ABOUT</a></li>
+                    <li><a href="#experience"  style="--i:3" onclick="toggleMenu();">
+                     EXPERIENCE</a>
+                    </li>
+                    <li><a href="#service" style="--i:4" onclick="toggleMenu();">SERVICE</a></li>
+                    <li><a href="#project"  style="--i:5" onclick="toggleMenu();">PROJECT</a></li>
+                    <li><a href="#contact"  style="--i:6" onclick="toggleMenu();">CONTACT</a></li>
+
                 </ul>
              </div>
              <div class="toggle"><i class="fa fa-bars"></i></div>
@@ -117,17 +116,14 @@
 
          </div>
          {% endfor %}
-
-
-
-
  <div class="experience" id="experience">
     <div class="title">
         <h4>Experience</h4>
     </div>
     <br>
     <br>
-{% for experience in experience %}
+{% for experience in experience reversed %}
+
 
     <div class="jobBox">
         <div class="map_Span">
@@ -150,12 +146,6 @@
     {% endfor %}
     <!-- end content  -->
 </div>
-
-        
-
-
-
-
          <div class="service" id="service">
             <div class="title">
                 <h4>Service</h4>
@@ -206,17 +196,19 @@
                 <div class="contactsection">
                     <div class="emailcontact">
                         <div class="contactcontainer">
-                            <div class="contactname">
-                                <input type="text"placeholder="ENTER YOUR NAME" >
-                                <input type="email"placeholder="ENTER YOUR EMAIL" >
+                            <form name="form">
+                                <div class="contactname">
+                                <input type="text"placeholder="ENTER YOUR NAME" name="contactname" value="" >
+                                <input type="email" placeholder="ENTER YOUR EMAIL" name="contactemail" value=" ">
                             </div>
                             <div class="message">
-                                <textarea placeholder="Your Message..." >
+                                <textarea placeholder="Your Message..." name="contactmsg" value="">
                                 </textarea>
                             </div>
                             <div class="submit">
-                                <input type="submit" value="Send">
+                                <input type="submit" value="Send" onclick="sendmail()">
                             </div>
+                            </form>
                         </div>
                     </div>
                     <ul class="manualcontactdetails">
@@ -248,7 +240,7 @@
               <br>
               <div class="copyrights" id="copyrights">
                 <div class="copyrightsK">
-                    <span>Handcrafted by me @2020-2022</span>
+                     <span>Handcrafted by me @2020-2022</span>
                 </div>
         </div>
     </div>
@@ -271,6 +263,22 @@
             let right_side_main = document.querySelector('.right_side_main');
             left_side_silde.classList.remove('active');
             right_side_main.classList.remove('active');
+        }
+
+        function sendmail(){
+            let form = document.form;
+            var name = form.contactname.value;
+            var email = form.contactemail.value;
+            var msg = form.contactmsg.value;
+            if (email.includes("@")||email.includes(".com")){
+                alert("will reach you soon "+name+" :)");
+                let empty = " ";
+                name = empty;
+                email = empty;
+                msg=empty;
+            }else{
+                alert("enter valid email");
+            }
         }
     </script>
 </body>
