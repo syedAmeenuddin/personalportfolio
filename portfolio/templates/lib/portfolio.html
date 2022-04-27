@@ -35,7 +35,7 @@
         {% endfor %}
         </style>
     </head>
-<body>
+<body onload = "visitedcount()">
 
     <div class="portfolio">
         <div class="left_side_silde">
@@ -250,6 +250,7 @@
 
 
     <script>
+    let count=0;
         let right_side_main = document.querySelector('.right_side_main');
         let toggle = document.querySelector('.toggle');
         let navbar_logo_toggle = document.querySelector('.navbar_logo_toggle');
@@ -279,6 +280,9 @@
             }else{
                 alert("enter valid email");
             }
+        }
+        function visitedcount(){
+            count+=1;
         }
     </script>
 </body>
